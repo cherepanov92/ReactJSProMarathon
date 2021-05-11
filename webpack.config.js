@@ -17,6 +17,25 @@ module.exports = {
             {
                 test: /\.[tj]sx?$/,
                 use: ['ts-loader'],
+            },
+            {
+                test: /\.(s*)css$/,
+                // Важна последовательность !
+                // Сначала css обработается css-loader, а потом style-loader
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                mode: 'local',
+                                localIdentName: '[name]__[local]__[hash:base64:5]',
+                                auto: /\.modules\.\w+$/i,
+                            }
+                        }
+                    },
+                    'sass-loader'
+                ]
             }
         ]
     },
