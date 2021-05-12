@@ -31,7 +31,7 @@ interface objInterface {
     male?: string;
 }
 
-const tsObjWithInterface: objTypes = {
+const tsObjWithInterface: objInterface = {
     name: 'Archy',
     birthDay: 24,
 }

@@ -16,11 +16,11 @@ workIdentify(1)
 workIdentify('str')
 
 // интерфейс с несколькими генериками
-interface MyArray<T> {
-    [n: number]: T;
-    // <U> - второй генерик в нашем случае нужен для возможности смена типа возвращаемого значения
-    map<U>(fn: (el: T) => U): U[];
-}
+// interface MyArray<T> {
+//     [n: number]: T;
+//     // <U> - второй генерик в нашем случае нужен для возможности смена типа возвращаемого значения
+//     map<U>(fn: (el: T) => U): U[];
+// }
 
 const tsArray: MyArray<number> = [1,2,3];
 
