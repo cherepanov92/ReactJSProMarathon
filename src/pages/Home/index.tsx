@@ -4,6 +4,7 @@ import Layout from "../../components/Layout";
 import Button from "../../components/Button";
 
 import s from './Home.module.scss';
+import Parallax from "../../components/Parallax";
 
 const HomePage = () => {
     return (
@@ -16,6 +17,9 @@ const HomePage = () => {
                     </h1>
                     <p>text</p>
                     <Button onClick={() => console.log('Button click')}>See pokemons</Button>
+                </div>
+                <div>
+                    <Parallax />
                 </div>
             </Layout>
         </div>
