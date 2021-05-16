@@ -10,9 +10,9 @@ const HomePage = () => {
     return (
         <div className={s.root}>
             <Header />
-            <Layout>
-                <div>
-                    <h1>
+            <Layout className={s.contextWrap}>
+                <div className={s.contextText}>
+                    <h1 className={s.heading}>
                         <b>Find</b> all you favorite <b>Pokemon</b>
                     </h1>
                     <p>text</p>
