@@ -33,6 +33,11 @@ interface MyArray<T> {
     [n: number]: T;
     map<U>(fn: (el: T) => U): U[];
     reduce(fn: (previousValue:T, currentItem:T, index:number) => T): T;
+
+    // Вариант Зара
+    // возвращаемое значение не обязательно того же типа, из которого состоит массив,
+    // но того типа, которого начальное значение:
+    // reduce<U>(callbackfn: (accumulator: U, currentValue: T, currentIndex: number, array: T[]) => U, initValue: U): U;
 }
 
 const testArray: MyArray<number> = [5,3,34];
