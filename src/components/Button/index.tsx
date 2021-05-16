@@ -13,7 +13,7 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({
     children,
     onClick,
-    fullWidth= true,
+    fullWidth,
     // todo: переписать на enum
     type= 'success',
     size = 'middle'

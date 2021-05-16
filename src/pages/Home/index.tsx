@@ -2,9 +2,10 @@ import React from 'react';
 import Header from "../../components/Header";
 import Layout from "../../components/Layout";
 import Button from "../../components/Button";
+import Parallax from "../../components/Parallax";
+import Heading from "../../components/Heading";
 
 import s from './Home.module.scss';
-import Parallax from "../../components/Parallax";
 
 const HomePage = () => {
     return (
@@ -12,10 +13,12 @@ const HomePage = () => {
             <Header />
             <Layout className={s.contextWrap}>
                 <div className={s.contextText}>
-                    <h1 className={s.heading}>
+                    <Heading type={'h1'}>
                         <b>Find</b> all you favorite <b>Pokemon</b>
-                    </h1>
-                    <p>text</p>
+                    </Heading>
+                    <Heading type={'h4'}>
+                        You can know the type of Pokemon, its strengths, disadvantages and abilities
+                    </Heading>
                     <Button onClick={() => console.log('Button click')}>See pokemons</Button>
                 </div>
                 <div>
