@@ -4,10 +4,11 @@ import cn from 'classnames';
 
 
 interface ButtonProps {
+    children: string;
     onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
     fullWidth?: boolean;
-    type: 'success' | 'danger';
-    size: 'small' | 'middle' | 'large';
+    type?: 'success' | 'danger';
+    size?: 'small' | 'middle' | 'large';
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -16,7 +17,7 @@ const Button: React.FC<ButtonProps> = ({
     fullWidth,
     // todo: переписать на enum
     type= 'success',
-    size = 'middle'
+    size = 'middle',
 }) => {
     return (
         <button
