@@ -6,6 +6,8 @@ import Parallax from "../../components/Parallax";
 import Heading from "../../components/Heading";
 
 import s from './Home.module.scss';
+import {navigate} from "hookrouter";
+import {LinkEnum} from "../../routes";
 
 const HomePage = () => {
     return (
@@ -19,7 +21,7 @@ const HomePage = () => {
                     <Heading type={'h4'}>
                         You can know the type of Pokemon, its strengths, disadvantages and abilities
                     </Heading>
-                    <Button onClick={() => console.log('Button click')}>See pokemons</Button>
+                    <Button onClick={() => navigate(LinkEnum.Pokedex)}>See pokemons</Button>
                 </div>
                 <div>
                     <Parallax />

@@ -4,29 +4,36 @@ import EmptyPage from "./pages/Empty";
 
 interface IGeneralMenu {
     title: string,
-    link: string,
+    link: LinkEnum,
     component: () => JSX.Element
+}
+
+export enum LinkEnum {
+    Home = '/',
+    Pokedex = '/pokedex',
+    Legendaries = '/legendaries',
+    Documentation = '/documentation',
 }
 
 export const GENERAL_MENU: IGeneralMenu[] = [
     {
         title: 'Home',
-        link: '/',
+        link: LinkEnum.Home,
         component: () => <HomePage />
     },
     {
         title: 'Pokédex',
-        link: '/pokedex',
-        component: () => <EmptyPage title={'Pokédex'} />
+        link: LinkEnum.Pokedex,
+        component: () => <EmptyPage title={'Pokedex'} />
     },
     {
         title: 'Legendaries',
-        link: '/legendaries',
+        link: LinkEnum.Legendaries,
         component: () => <EmptyPage title={'Legendaries'} />
     },
     {
         title: 'Documentation',
-        link: '/documentation',
+        link: LinkEnum.Documentation,
         component: () => <EmptyPage title={'Documentation'} />
     },
 ]
