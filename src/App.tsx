@@ -1,14 +1,11 @@
 import React from 'react';
-import cn from 'classnames';
+import HomePage from "./pages/Home";
 
 import styles from './App.module.scss';
 
 const App = () => {
-    return (
-        <div className={cn(styles.header)}>
-            This is app component!
-        </div>
-    )
+    console.log('log')
+    return <HomePage />
 }
 
 export default App;
