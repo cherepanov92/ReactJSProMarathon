@@ -13,9 +13,9 @@ const HomePage = () => {
     return (
         <div className={s.root}>
             <Header />
-            <Layout className={s.contextWrap}>
-                <div className={s.contextText}>
-                    <Heading type={'h1'}>
+            <Layout className={}>
+                <div className={}>
+                    <Heading type='h1'>
                         <b>Find</b> all you favorite <b>Pokemon</b>
                     </Heading>
                     <Heading type={'h4'}>

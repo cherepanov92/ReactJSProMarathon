@@ -276,7 +276,7 @@ const PokedexPage = () => {
         <>
             <Header />
             <div className={s.cardsWrapper}>
-                {pokemons.map(pokemon => <PokemonCard {...pokemon} />)}
+                {pokemons.map(pokemon => <PokemonCard key={pokemon.id} {...pokemon} />)}
             </div>
         </>
     );
