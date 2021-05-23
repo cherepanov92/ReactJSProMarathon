@@ -9,18 +9,22 @@ const PokedexPage = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
 
+    const getPokemons = async() => {
+        setIsLoading(true);
+        try {
+            const response = await fetch('http://zar.hosthot.ru/api/v1/pokemons');
+            const data = await response.json();
+            setTotalPokemons(data.total);
+            setPokemons(data.pokemons);
+        } catch (e) {
+            setIsError(true);
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
     useEffect(() => {
-        fetch('http://zar.hosthot.ru/api/v1/pokemons')
-            .then(res => res.json())
-            .then(data => {
-                console.log('data', data);
-                setTotalPokemons(data.total)
-                setPokemons(data.pokemons)
-            })
-            .catch(() => {
-                setIsError(true)
-            })
-            .finally(() => setIsLoading(false))
+        getPokemons();
     }, []);
 
     if (isLoading) {
