@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from "../../components/Header";
 import PokemonCard from "../../components/PokemonCard";
 
 import s from './Pokedex.module.scss';
@@ -274,7 +273,6 @@ const PokedexPage = () => {
 
     return (
         <>
-            <Header />
             <div className={s.cardsWrapper}>
                 {pokemons.map(pokemon => <PokemonCard key={pokemon.id} {...pokemon} />)}
             </div>
