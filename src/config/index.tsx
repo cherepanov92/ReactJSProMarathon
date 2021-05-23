@@ -8,7 +8,7 @@ export const config = {
             getPokemons: {
                 method: 'GET',
                 uri: {
-                    pathname: 'api/v1/pokemons',
+                    pathname: '/api/v1/pokemons',
                 }
             }
         }
