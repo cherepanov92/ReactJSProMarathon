@@ -81,6 +81,8 @@ module.exports = {
         port: 3000,
         open: true,
         hot: true,
+        // для работы hookrouter
+        historyApiFallback: true,
     },
     devtool: 'source-map',
 };

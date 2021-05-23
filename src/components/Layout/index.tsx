@@ -3,7 +3,12 @@ import cn from 'classnames';
 
 import s from './style.module.scss';
 
-const Layout = ({ children, className = null }) => (
+interface LayoutProps {
+    children: any;
+    className?: string;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children, className = null }) => (
     <div className={cn(s.root, className)}>{ children }</div>
 );
 

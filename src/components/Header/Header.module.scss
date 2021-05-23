@@ -5,6 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background: #F5DB13;
 }
 
 .wrap {
@@ -60,5 +61,9 @@
       opacity: 1;
     }
   }
+}
+
+.activeLink {
+  color: darkgoldenrod;
 }
 
