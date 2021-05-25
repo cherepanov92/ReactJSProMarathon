@@ -6,17 +6,20 @@ import useData from "../../hook/getData";
 
 const PokedexPage = () => {
     const [searchValue, setSearchValue] = useState('');
-    const query = useMemo(() => ({
-        name: searchValue
-    }), [searchValue]);
+    const [query, setQuery] = useState({});
+
     const {
         data,
         isLoading,
         isError,
-    } = useData('getPokemons', query);
+    } = useData('getPokemons', query, [searchValue]);
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchValue(e.target.value);
+        setQuery((s) => ({
+            ...s,
+            name: e.target.value
+        }))
     }
 
     //todo: фиксить в дивах
