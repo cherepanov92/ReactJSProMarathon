@@ -1,5 +1,6 @@
 import React from 'react';
 import Heading from "../Heading";
+import pokeball from './assets/pokeball.png';
 
 import s from './PokemonCard.module.scss';
 
@@ -45,7 +46,7 @@ const PokemonCard:React.FC<PokemonCardProps> = ({ name, stats, img, types }) => 
                 </div>
             </div>
             <div className={s.pictureWrap}>
-                <img src={img} alt={name} />
+               <img src={img ? img : pokeball} alt={name} />
             </div>
         </div>
     );
