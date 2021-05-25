@@ -5,7 +5,7 @@ import s from './Pokedex.module.scss';
 import req from "../../utils/request";
 
 const usePokemons = () => {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
 
@@ -14,7 +14,6 @@ const usePokemons = () => {
             setIsLoading(true);
             try {
                 const result = await req('getPokemons');
-
                 setData(result);
             } catch (e) {
                 setIsError(true);
