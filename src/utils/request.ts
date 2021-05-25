@@ -1,7 +1,7 @@
 import Url from 'url';
 import getUriWithParamsConfig from "./getUriWithParamsConfig";
-async function req(endpoint: string) {
-    const uri = Url.format(getUriWithParamsConfig(endpoint))
+async function req(endpoint: string, query: object) {
+    const uri = Url.format(getUriWithParamsConfig(endpoint, query))
     return await fetch(uri).then((res) => res.json());
 }
 

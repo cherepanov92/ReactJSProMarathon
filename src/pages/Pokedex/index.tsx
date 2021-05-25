@@ -1,48 +1,27 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import PokemonCard from "../../components/PokemonCard";
 
 import s from './Pokedex.module.scss';
-import req from "../../utils/request";
-
-const usePokemons = () => {
-    const [data, setData] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
-    const [isError, setIsError] = useState(false);
-
-    useEffect(() => {
-        const getPokemons = async() => {
-            setIsLoading(true);
-            try {
-                const result = await req('getPokemons');
-                setData(result);
-            } catch (e) {
-                setIsError(true);
-            } finally {
-                setIsLoading(false);
-            }
-        };
-
-        getPokemons();
-    }, []);
-
-    return {
-        data,
-        isLoading,
-        isError,
-    }
-}
+import useData from "../../hook/getData";
 
 const PokedexPage = () => {
-
+    const [searchValue, setSearchValue] = useState('')
     const {
         data,
         isLoading,
         isError,
-    } = usePokemons()
+    } = useData('getPokemons', {
+        name: searchValue
+    });
 
-    if (isLoading) {
-        return <div>Loading...</div>
+    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchValue(e.target.value);
     }
+
+    //todo: фиксить в дивах
+    // if (isLoading) {
+    //     return <div>Loading...</div>
+    // }
 
     if (isError) {
         return <div>Something wrong</div>
@@ -51,9 +30,12 @@ const PokedexPage = () => {
     return (
         <>
 
-            <p>{data.total} Pokemons for you to choose your favorite</p>
+            <p>{!isLoading && data.total} Pokemons for you to choose your favorite</p>
+            <div>
+                <input type={'text'} value={searchValue} onChange={handleSearchChange}/>
+            </div>
             <div className={s.cardsWrapper}>
-                {data.pokemons.map(pokemon => <PokemonCard key={pokemon.id} {...pokemon} />)}
+                {!isLoading && data.pokemons.map(pokemon => <PokemonCard key={pokemon.id} {...pokemon} />)}
             </div>
         </>
     );
