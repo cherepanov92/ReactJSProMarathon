@@ -20,7 +20,7 @@ const useData = (endpoint: string, query: object ) => {
         };
 
         getData();
-    }, [JSON.stringify(query)]);
+    }, [query]);
 
     return {
         data,

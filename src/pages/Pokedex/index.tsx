@@ -1,18 +1,19 @@
-import React, {useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import PokemonCard from "../../components/PokemonCard";
 
 import s from './Pokedex.module.scss';
 import useData from "../../hook/getData";
 
 const PokedexPage = () => {
-    const [searchValue, setSearchValue] = useState('')
+    const [searchValue, setSearchValue] = useState('');
+    const query = useMemo(() => ({
+        name: searchValue
+    }), [searchValue]);
     const {
         data,
         isLoading,
         isError,
-    } = useData('getPokemons', {
-        name: searchValue
-    });
+    } = useData('getPokemons', query);
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchValue(e.target.value);
