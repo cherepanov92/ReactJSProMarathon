@@ -5,6 +5,7 @@ import s from './Pokedex.module.scss';
 import useData from "../../hook/getData";
 import {IPokemons, PokemonsRequest} from "../../interface/pokemons";
 import useDebounce from "../../hook/useDebounce";
+import {navigate} from "hookrouter";
 
 interface IQuery {
     limit: number,
@@ -43,13 +44,16 @@ const PokedexPage = () => {
 
     return (
         <>
-
             <p>{!isLoading && data && data.total} Pokemons for you to choose your favorite</p>
             <div>
                 <input type={'text'} value={searchValue} onChange={handleSearchChange}/>
             </div>
             <div className={s.cardsWrapper}>
-                {!isLoading && data && data.pokemons.map((pokemon: PokemonsRequest) => <PokemonCard key={pokemon.id} {...pokemon} />)}
+                {!isLoading && data && data.pokemons.map((pokemon: PokemonsRequest) =>
+                    <div onClick={() => navigate(`/pokedex/${pokemon.id}`)}>
+                        <PokemonCard key={pokemon.id} {...pokemon} />
+                    </div>
+                )}
             </div>
         </>
     );

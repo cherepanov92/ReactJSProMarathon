@@ -3,7 +3,6 @@ import Heading from "../Heading";
 import pokeball from './assets/pokeball.png';
 
 import s from './PokemonCard.module.scss';
-import {navigate} from "hookrouter";
 
 interface IStatus {
     'hp': number;
@@ -15,16 +14,15 @@ interface IStatus {
 }
 
 interface PokemonCardProps {
-    id: number;
     name: string;
     stats: IStatus;
     img: string;
     types: Array<string>
 }
 
-const PokemonCard:React.FC<PokemonCardProps> = ({ id, name, stats, img, types }) => {
+const PokemonCard:React.FC<PokemonCardProps> = ({ name, stats, img, types }) => {
     return (
-        <div className={s.root} onClick={() => navigate(`/pokedex/${id}`)}>
+        <div className={s.root}>
             <div className={s.infoWrap}>
                 <Heading type='h4' className={s.titleName}>
                     {name}
