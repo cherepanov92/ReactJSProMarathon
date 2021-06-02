@@ -1,17 +1,61 @@
 import config from "../config";
 
-function getUriWithParamsConfig(endpointConfig: string, query?: object, uriSuffix?: string | number) {
-    let url = {
+interface IApiConfigUri {
+    host: string,
+    protocol: string,
+    pathname: string,
+    query?: object
+}
+
+interface IEndpoint {
+    method: string,
+    uri: {
+        pathname: string,
+        query?: object
+    }
+}
+
+function getUriWithParamsConfig(endpointConfig: string, params: any) {
+    const { method, uri }: IEndpoint = config.client.endpoint[endpointConfig as keyof typeof config.client.endpoint];
+    let body = {};
+
+    const apiConfigUri: IApiConfigUri = {
         ...config.client.server,
-        ...config.client.endpoint[endpointConfig].uri,
-        query,
+        ...uri,
+        query: {
+            ...uri.query,
+        }
     }
 
-    if (uriSuffix) {
-        url.pathname = `${url.pathname}/${uriSuffix}`;
+    const query = {
+        ...params,
+    }
+    
+    const pathname = Object.keys(query).reduce((acc, val) => {
+        if (acc.indexOf(`{${val}`) !== -1) {
+            const result = acc.replace(`{${val}}`, query[val as typeof query]);
+            delete query[val as typeof query];
+            return result;
+        }
+        return acc;
+    }, apiConfigUri.pathname)
+
+    apiConfigUri.pathname = pathname;
+
+    if (method === 'GET') {
+        apiConfigUri.query = {
+            ...apiConfigUri.query,
+            ...query,
+        }
+    } else {
+        body = query;
     }
 
-    return url;
+    return {
+        method,
+        uri: apiConfigUri,
+        body
+    }
 }
 
 export default getUriWithParamsConfig;
