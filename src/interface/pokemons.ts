@@ -31,3 +31,5 @@ export interface IPokemons {
     offset: number,
     pokemons: PokemonsRequest[]
 }
+
+export type ITypesRequest = string[];
